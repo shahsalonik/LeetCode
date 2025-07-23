@@ -1,14 +1,12 @@
-class Solution(object):
-    def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        index_dict = {}
+
         for i in range(len(nums)):
-            needed = target - nums[i]
-            for j in range(i + 1, len(nums)):
-                if nums[j] == needed:
-                    return [i, j]
-        return [-1, -1] # should not be reached
-        
+            res = target - nums[i]
+            if res in index_dict.keys():
+                return sorted([i, index_dict[res]])
+            else:
+                index_dict[nums[i]] = i
+
+        return [-1, -1]
