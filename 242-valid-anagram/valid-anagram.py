@@ -1,8 +1,10 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        from collections import Counter
-        
-        s_dict = Counter(s)
-        t_dict = Counter(t)
-
-        return s_dict == t_dict
+        sc=collections.Counter(s)
+        tc=collections.Counter(t)
+        if len(s)!=len(t):
+            return False
+        for k,v in sc.items():
+            if tc[k]!=v:
+                return False
+        return True
