@@ -10,6 +10,6 @@ class Solution:
                 if len(stack) > 0 and stack[-1] == hp[letter]:
                     stack.pop()
                 else:
-                    stack.append(letter)
+                    return False
             
         return len(stack) == 0
