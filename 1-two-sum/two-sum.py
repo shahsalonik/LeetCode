@@ -5,7 +5,7 @@ class Solution:
         for i, val in enumerate(nums):
             need = target - val
             if need in targ_map:
-                return sorted([i, targ_map[need]])
+                return [i, targ_map[need]]
 
             targ_map[val] = i
         return [-1, -1]
