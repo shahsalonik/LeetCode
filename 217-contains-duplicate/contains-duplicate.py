@@ -1,5 +1,10 @@
 class Solution:
+    from collections import Counter
     def containsDuplicate(self, nums: List[int]) -> bool:
-        if len(nums) != len(set(nums)):
-            return True
+        freq = Counter(nums)
+
+        for key, val in freq.items():
+            if val > 1:
+                return True
+
         return False
