@@ -1,10 +1,16 @@
 class Solution:
+    from collections import Counter
     def isAnagram(self, s: str, t: str) -> bool:
-        sc=collections.Counter(s)
-        tc=collections.Counter(t)
-        if len(s)!=len(t):
+        freq_s = Counter(s)
+        freq_t = Counter(t)
+
+        if len(freq_s.keys()) != len(freq_t.keys()):
             return False
-        for k,v in sc.items():
-            if tc[k]!=v:
+
+        for key, val in freq_s.items():
+            if not freq_t[key]: 
                 return False
+            if freq_t[key] != val:
+                return False
+        
         return True
