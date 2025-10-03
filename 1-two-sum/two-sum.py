@@ -1,12 +1,11 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        result = []
+        targ_map = {}
 
-        for i in range(len(nums)):
-            need = target - nums[i]
-            if need in nums and nums.index(need) != i:
-                result.append(i)
-                result.append(nums.index(need))
-                break
-        
-        return sorted(result)
+        for i, val in enumerate(nums):
+            need = target - val
+            if need in targ_map:
+                return sorted([i, targ_map[need]])
+
+            targ_map[val] = i
+        return [-1, -1]
