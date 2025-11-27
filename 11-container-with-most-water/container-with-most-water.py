@@ -1,17 +1,23 @@
 class Solution:
     def maxArea(self, height: List[int]) -> int:
-        first = 0
-        second = len(height) - 1
-        max_volume = 0
-        # volume is w x h of lower bar
-        while first < second:
-            width = second - first
-            heights = min(height[first], height[second])
-            volume = width * heights
-            if volume > max_volume:
-                max_volume = volume
-            if height[first] < height[second]:
-                first += 1
+        left = 0
+        right = len(height) - 1
+        length = right - left
+        curr_area = min(height[left], height[right]) * length
+
+        # this loop condition can't be length > 0
+        # this is bc it's the pointers that are changing
+        # not just the length (if the pointers change, the length does too)
+        while left < right:
+            length = right - left
+            total = min(height[left], height[right]) * length
+            if total > curr_area:
+                curr_area = total
+            elif height[left] < height[right]:
+                left += 1
+            elif height[right] < height[left]:
+                right -= 1
             else:
-                second -= 1
-        return max_volume
+                left += 1
+                right -= 1
+        return curr_area
