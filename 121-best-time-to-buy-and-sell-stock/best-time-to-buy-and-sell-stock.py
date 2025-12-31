@@ -6,7 +6,6 @@ class Solution:
 
         while buy < sell and sell < len(prices):
             # in the case that it's a profitable transaction
-            print(prices[buy], prices[sell])
             if prices[buy] <= prices[sell]:
                 diff = prices[sell] - prices[buy]
                 max_profit = max(diff, max_profit)
