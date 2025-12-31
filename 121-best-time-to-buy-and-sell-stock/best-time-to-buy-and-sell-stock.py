@@ -1,13 +1,17 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        max_diff = 0
-        smallest = 0
-        largest = 1
-        while largest < len(prices):
-            diff = prices[largest] - prices[smallest]
-            if diff > 0:
-                max_diff = max(diff, max_diff)
+        max_profit = 0
+        buy = 0
+        sell = 1
+
+        while buy < sell and sell < len(prices):
+            # in the case that it's a profitable transaction
+            print(prices[buy], prices[sell])
+            if prices[buy] <= prices[sell]:
+                diff = prices[sell] - prices[buy]
+                max_profit = max(diff, max_profit)
             else:
-                smallest = largest
-            largest += 1
-        return max_diff
+                buy = sell
+            sell += 1
+            
+        return max_profit
