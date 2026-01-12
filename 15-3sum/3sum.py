@@ -19,8 +19,8 @@ class Solution:
                         left += 1
 
                     # skip duplicate right values
-                    while left < right and nums[right] == nums[right + 1]:
-                        right -= 1
+                    # while left < right and nums[right] == nums[right + 1]:
+                    #     right -= 1
                 elif add < 0:
                     left += 1
                 else:
