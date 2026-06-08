@@ -1,16 +1,14 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        max_profit = 0
-        buy = 0
-        sell = 1
+        max_prof = 0
+        left, right = 0, 1
 
-        while buy < sell and sell < len(prices):
-            # in the case that it's a profitable transaction
-            if prices[buy] <= prices[sell]:
-                diff = prices[sell] - prices[buy]
-                max_profit = max(diff, max_profit)
+        while right < len(prices):
+            if prices[left] < prices[right]:
+                profit = prices[right] - prices[left]
+                max_prof = max(max_prof, profit)
             else:
-                buy = sell
-            sell += 1
-            
-        return max_profit
+                left = right
+            right += 1
+
+        return max_prof
